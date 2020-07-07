@@ -1,5 +1,4 @@
-Due to the COVID pandemic, people have been advised to stay at least 6
-feet away from any other person. Now, people are lining up in a queue at the local shop and it is your duty to check whether 
+Due to the COVID pandemic, people have been advised to stay at least 6 feet away from any other person. Now, people are lining up in a queue at the local shop and it is your duty to check whether 
 they are all following this advice.
 
 There are a total of N
