@@ -1,5 +1,4 @@
 for _ in range(int(input())):
-    
     def permute(nums):
         result = [[]]
         for n in nums:
