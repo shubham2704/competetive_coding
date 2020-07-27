@@ -21,7 +21,6 @@ def pig_it1(text):
 print(pig_it1('Pig latin is cool'))
 
 # Pro version 2
-
 def pig_it2(text):
     return " ".join(x[1:]+x[:1]+'ay' if x.isalpha() else x for x in text.split(" "))
 
