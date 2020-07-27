@@ -1,5 +1,5 @@
+# Naive Method
 def pig_it(text):
-    #your code here
     l = list(map(str,(text).split(" ")))
     pun = ["!","?",","]
     b = ""
@@ -13,3 +13,11 @@ def pig_it(text):
     return " ".join(m)
 
 print(pig_it('Hello world !'))
+
+# Pro Version
+def pig_it1(text):
+    l = list(map(str,text.split(" ")))
+    pun = ['!','?',',']
+    return " ".join(x if x in pun else x[1:]+x[:1]+'ay' for x in l)
+
+print(pig_it1('Pig latin is cool'))
