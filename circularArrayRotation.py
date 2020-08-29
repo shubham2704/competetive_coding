@@ -8,6 +8,8 @@ p = n1[k-1:] + n1[:-k]
 for x in q1:
     print(p[x])
 
+
+
 # Second Solution
 
 length, ops, qs = [int(x) for x in input().split()]
