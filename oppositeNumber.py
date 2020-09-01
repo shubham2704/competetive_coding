@@ -1,3 +1,3 @@
 def oppNumber(n):
-    return n - n*2
+    return -n
 print(oppNumber(1))
