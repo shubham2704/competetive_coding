@@ -1,27 +1,4 @@
 """
-Create Phone Number
-
-Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.
-
-Example:
-create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) # => returns "(123) 456-7890"
-
-
-Solution
-
-def create_phone_number(n):
-    #your code here
-    s = ''
-    for i in n:
-        s+=str(i)
-    
-    t = "(" + s[:3]+")" + " " +s[3:6] + "-" + s[6:]
-    return t
-
-"""
-
-
-"""
 Binary Addition
 
 Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
