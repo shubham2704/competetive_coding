@@ -1,24 +1,4 @@
 """
-Binary Addition
-
-Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
-
-The binary number returned should be a string.
-
-
-Solution
-
-def add_binary(a,b):
-    #your code here
-    n = a+b
-    b = bin(n).replace("0b","")
-    
-    return str(b)
-
-"""
-
-
-"""
 Highest And Lowest
 
 In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
