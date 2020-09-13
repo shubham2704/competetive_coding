@@ -5,7 +5,7 @@ Write simple .camelCase method (camel_case function in PHP, CamelCase in C# or c
 
 For instance:
 
-camelcase("hello case") => HelloCase
+camelcase("hello case") = > HelloCase
 camelcase("camel case word") => CamelCaseWord
 
 Solution
