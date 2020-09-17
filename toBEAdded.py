@@ -2,7 +2,6 @@
 Beginner Series #1 School Paperwork
 
 Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.
-
 Your task is to calculate how many blank pages do you need.
 
 
@@ -19,9 +18,7 @@ You only need one - Beginner
 
 
 You will be given an array a and a value x. All you need to do is check whether the provided array contains the value.
-
 Array can contain numbers or strings. X can be either.
-
 Return true if the array contains the value, false if not.
 
 Solution
