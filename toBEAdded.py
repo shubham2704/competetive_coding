@@ -9,12 +9,11 @@ Your task is to calculate how many blank pages do you need.
 Solution
 
 def paperwork(n, m):
-    # Happy Coding! ^_^
     return sum([0 if n<0 or m<0 else abs(n*m)])
 """
 
-"""
 
+"""
 
 You only need one - Beginner
 
