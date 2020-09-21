@@ -1,19 +1,4 @@
 """
-
-You only need one - Beginner
-
-
-You will be given an array A and a value X. All you need to do is check whether the provided array contains the value.
-Array can contain numbers or strings. X can be either.
-Return true if the array contains the value, false if not.
-
-Solution
-
-def check(seq, elem):
-    return True if elem in seq else False
-"""
-
-"""
 Speed code Array Madness
 
 
