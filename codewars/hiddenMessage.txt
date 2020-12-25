@@ -1,0 +1,21 @@
+You are a great investigator. You are spending Christmas holidays with your family when you receive a series of postcards.
+At first glance the text on the postcards doesn't make sense (why send random quotes?), but after a closer look you notice something strange.
+
+Maybe there is a hidden message!
+
+Technical details
+Your task is to create a class Investigator with at least these two methods:
+
+postcard(self, text) - analyzes text (a string); return value doesn't matter.
+hidden_message(self) - returns the hidden message (a string).
+Typical usage:
+
+investigator = Investigator()
+investigator.postcard(text of first postcard)
+investigator.postcard(text of second postcard)
+investigator.postcard(...)
+investigator.postcard(text of last postcard)
+investigator.hidden_message()  # return value is checked
+# investigator goes out of scope
+1-15 postcards per instance
+one hidden message per instance
