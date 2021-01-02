@@ -1,0 +1,4 @@
+ixteen circles with radius r are placed as shown in the picture. r is an integer and ≥ 1.
+
+circles
+Find the radius of the shaded circle in the centre, rounded to two decimal places.
