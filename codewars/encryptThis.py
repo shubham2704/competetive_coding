@@ -16,3 +16,5 @@ def encrypt_this(text):
         result.append(''.join(word))
     
     return ' '.join(result)
+
+print(encrypt_this('hello world'))
