@@ -1,0 +1,32 @@
+import sys
+input = sys.stdin.readline
+
+T = int(input())
+for t in range(1, T + 1):
+    m = int(input())
+    pr = dict()
+    tot = 0
+    for _ in range(m):
+        p, n = map(int, input().split())
+        tot += p * n
+        pr[p] = n
+    poss = [0]
+    for i in range(2,min(3500,tot-1)):
+        prod = tot - i
+        newS = 0
+        works = True
+        for j in pr:
+            if prod % j == 0:
+                count = 0
+                while prod % j == 0:
+                    prod //= j
+                    count += 1
+                    newS += j
+                if j not in pr or pr[j] < count:
+                    works = False
+                    break
+        if prod == 1 and works and newS == i:
+            poss.append(tot - i)
+                
+    
+    print(f'Case #{t}: {max(poss)}')

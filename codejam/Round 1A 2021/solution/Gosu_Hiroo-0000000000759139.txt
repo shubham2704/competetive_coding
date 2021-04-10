@@ -1,0 +1,43 @@
+import sys
+from decimal import Decimal, getcontext
+read = sys.stdin.buffer.read
+readline = sys.stdin.buffer.readline
+readlines = sys.stdin.buffer.readlines
+
+TC = int(input())
+def all_9(s):
+    return s == len(s)*'9'
+for tc in range(TC):
+    ans = 0
+    curr = 0
+
+    N = int(input())
+    a = list(map(int, input().split()))
+    # print(N,a)
+    for i in range(N):
+        n = len(str(a[i]))
+        m = len(str(curr))
+        if n <= m:
+            if str(a[i]) == str(curr)[:n]:
+                if all_9(str(curr)[n:]):
+                    curr = a[i]
+                    for _ in range(m-n+1):curr *= 10
+                    ans += m-n+1
+                else:
+                    t = str(int(str(curr)[n:])+1)
+                    for _ in range(m-n-len(t)): t = '0' + t
+                    curr = str(curr)[:n]+t
+                    ans += m - n
+            elif str(a[i]) < str(curr)[:n]:
+                curr = a[i]
+                for _ in range(m-n+1):curr *= 10
+                ans += m-n+1
+            else:
+                curr = a[i]
+                for _ in range(m-n): curr *= 10
+                ans += m-n
+        else:
+            curr = a[i]
+        # print(i, curr,ans)
+    print(f"Case #{tc+1}: {ans}")
+

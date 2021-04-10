@@ -1,0 +1,22 @@
+import sys
+input = sys.stdin.readline
+
+T = int(input())
+for t in range(1, T + 1):
+    n = int(input())
+    l = list(map(int, input().split()))
+    lo = l[0] - 1
+    out = 0
+    for v in l:
+        smol = v
+        tol = v
+        while tol <= lo:
+            smol *= 10
+            tol *= 10
+            tol += 9
+            out += 1
+        if smol > lo:
+            lo = smol
+        else:
+            lo += 1
+    print(f'Case #{t}: {out}')

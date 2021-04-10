@@ -1,0 +1,49 @@
+import sys,random,bisect
+from collections import deque,defaultdict
+from heapq import heapify,heappop,heappush
+from itertools import permutations
+
+input = lambda :sys.stdin.readline().rstrip()
+mi = lambda :map(int,input().split())
+li = lambda :list(mi())
+
+ans = []
+for _ in range(int(input())):
+    N = int(input())
+    X = li()
+
+    res = 0
+    for i in range(1,N):
+        tmp = X[i]
+        for j in range(1000):
+            if tmp > X[i-1]:
+                X[i] = tmp
+                res += j
+                break
+            else:
+                if tmp * 10 > X[i-1]:
+                    Q = 10**j
+                    if X[i-1]//Q==X[i]:
+                        if X[i-1]%Q!=Q-1:
+                            X[i] = X[i-1]+1
+                            res += j
+                            break
+                        else:
+                            X[i] = 10 * tmp
+                            res += j+1
+                            break
+                    else:
+                        tmp *= 10
+                else:
+                    tmp *= 10
+
+    #print(X)
+
+    ans.append(res)
+
+
+
+#print(ans)
+
+for case in range(1,len(ans)+1):
+    print("Case #{}: {}".format(case,ans[case-1]))

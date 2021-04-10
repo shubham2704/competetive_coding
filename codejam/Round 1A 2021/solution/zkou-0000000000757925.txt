@@ -1,0 +1,51 @@
+def solve():
+    N = int(input())
+    Xs = input().split()
+    ans = 0
+    lb = int(Xs[0]) + 1
+    lb_str = str(lb)
+    for X_str in Xs[1:]:
+        X = int(X_str)
+        if lb > X:
+            if len(lb_str) == len(X_str):
+                X_str = X_str + '0'
+                X = int(X_str)
+                ans += 1
+            else:
+                Xlen = len(X_str)
+                lb_beg = int(lb_str[:Xlen])
+                if lb_beg <= X:
+                    ans += len(lb_str) - Xlen
+                    if lb_beg < X:
+                        X *= 10 ** (len(lb_str) - Xlen)
+                    else:
+                        X = lb
+                else:
+                    ans += len(lb_str) - Xlen + 1
+                    X *= 10 ** (len(lb_str) - Xlen + 1)
+        # print(X)
+        lb = X + 1
+        lb_str = str(lb)
+
+    return ans  # answer
+
+
+
+
+outcnt = 0
+
+
+def out(ans):
+    global outcnt
+    outcnt += 1
+    print(f"Case #{outcnt}: {ans}")
+
+
+def main():
+    T = int(input())
+    for _ in range(T):
+        out(solve())
+
+
+if __name__ == "__main__":
+    main()

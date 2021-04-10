@@ -1,0 +1,147 @@
+import sys
+input = sys.stdin.readline
+import fractions
+F = fractions.Fraction
+
+pascal = [[1]]
+for _ in range(130):
+    nl = [1]
+    for i in range(_):
+        nl.append((pascal[-1][i] + pascal[-1][i+1]))
+    nl.append(1)
+    pascal.append(nl)
+
+T = int(input())
+for t in range(1, T + 1):
+    n, q = map(int, input().split())
+    if n == 1:
+        s, c = input().split()
+        c = int(c)
+        if 2 * c >= q:
+            #More right than wrong
+            print(f'Case #{t}: {s} {c}/1')
+        else:
+            opp = ''.join('F' if ch != 'F' else 'T' for ch in s)
+            print(f'Case #{t}: {opp} {q-c}/1')
+    elif n == 2:
+        s1, c1 = input().split()
+        s2, c2 = input().split()
+        c1 = int(c1)
+        c2 = int(c2)
+        same = 0
+        diff = 0
+        for i in range(q):
+            if s1[i] == s2[i]:
+                same += 1
+            else:
+                diff += 1
+        c1d = (diff + c1 - c2)//2
+        c2d = (diff + c2 - c1)//2
+        assert c1 - c1d == c2 - c2d
+        assert c1d + c2d == diff
+        sd = c1 - c1d
+        out = 0
+        outS = []
+        for i in range(q):
+            if s1[i] == s2[i]:
+                if 2 * sd >= same:
+                    out += F(sd,same)
+                    outS.append(s1[i])
+                else:
+                    out += 1 - F(sd,same)
+                    outS.append('T' if s2[i] == 'F' else 'F')
+            else:
+                if c1d >= c2d:
+                    out += F(c1d,diff)
+                    outS.append(s1[i])
+                else:
+                    out += F(c2d,diff)
+                    outS.append(s2[i])
+        print(f'Case #{t}: {"".join(outS)} {out.numerator}/{out.denominator}')
+    elif n == 3:
+        s1, c1 = input().split()
+        s2, c2 = input().split()
+        s3, c3 = input().split()
+        c1 = int(c1)
+        c2 = int(c2)
+        c3 = int(c3)
+
+        trueC = [0] * q
+        count = 0
+
+        same = 0
+        d1 = 0
+        d2 = 0
+        d3 = 0
+        for i in range(q):
+            if s1[i] == s2[i] == s3[i]:
+                same += 1
+            elif s1[i] == s2[i]:
+                d3 += 1
+            elif s2[i] == s3[i]:
+                d1 += 1
+            else:
+                assert s1[i] == s3[i]
+                d2 += 1
+        for allS in range(0, same + 1):
+            cc1 = c1 - allS
+            cc2 = c2 - allS
+            cc3 = c3 - allS
+            eq1 = cc1 - d2 - d3
+            eq2 = cc2 - d1 - d3
+            eq3 = cc3 - d2 - d1
+            aN = eq1 + eq2 + eq3
+            a22 = eq1 - aN
+            b22 = eq2 - aN
+            c22 = eq3 - aN
+            assert a22 % 2 == b22%2 == c22 % 2 == 0
+            a = a22//2
+            b = b22//2
+            c = c22//2
+            #print(allS,a,b,c)
+            assert allS + a + (d2 - b) + (d3 - c) == c1
+            assert allS + b + (d1 - a) + (d3 - c) == c2
+            assert allS + c + (d2 - b) + (d1 - a) == c3
+            if 0 <= a <= d1 and 0 <= b <= d2 and 0 <= c <= d3:
+                caseCount = pascal[same][allS] * pascal[d1][a] * pascal[d2][b] * pascal[d3][c]
+                count += caseCount
+                for i in range(q):
+                    if s1[i] == s2[i] == s3[i]:
+                        if s1[i] == 'T':
+                            trueC[i] += caseCount * F(allS,same)
+                        else:
+                            trueC[i] += caseCount * (1-F(allS,same))
+                    elif s1[i] == s2[i]:
+                        if s3[i] == 'T':
+                            trueC[i] += caseCount * F(c,d3)
+                        else:
+                            trueC[i] += caseCount * (1-F(c,d3))
+                    elif s2[i] == s3[i]:
+                        if s1[i] == 'T':
+                            trueC[i] += caseCount * F(a,d1)
+                        else:
+                            trueC[i] += caseCount * (1-F(a,d1))
+                    else:
+                        if s2[i] == 'T':
+                            trueC[i] += caseCount * F(b,d2)
+                        else:
+                            trueC[i] += caseCount * (1-F(b,d2))
+
+        out = 0
+        outS = []
+        for i in range(q):
+            pT = F(trueC[i],count)
+            if pT >= F(1,2):
+                outS.append('T')
+                out += pT
+            else:
+                outS.append('F')
+                out += (1-pT)
+        print(f'Case #{t}: {"".join(outS)} {out.numerator}/{out.denominator}')
+        
+        
+
+        
+        
+    
+    
