@@ -1,33 +1,10 @@
-for _ in range(int(input())):
-    n = input()
-    b = len(n)//2
-    
-    if len(n)%2==0:
-        c,d = n[:b],n[b:]
-        if sorted(c) == sorted(d):
-            print('YES')
-        else:
-            print('NO')
-    else:
-        c,d = n[:b],n[b+1:]
-        print(c,d)
-        if sorted(c) == sorted(d):
-            print('YES')
-        else:
-            print('NO')
-        
-# a = 'ga'
-# b = 'ga'
-# if a == b:
-#     print('yes')
-# else:
-#     print('no')
-# a = 'ro'
-# b = 'or'
+import itertools as it
+import operator as op
 
-# print(sorted(a))
-# print(sorted(b))
-# if sorted(a) == sorted(b):
-#     print('yes')
-# else:
-#     print('No')
+def factorials_nums(n):
+    result = list(it.accumulate(it.chain([1], range(1, 1 + n)), op.mul))
+    return result[-1]
+f = factorials_nums(60)
+a = str(f).rstrip('0')
+print(len(str(f)) - len(a))
+print(factorials_nums(60))
