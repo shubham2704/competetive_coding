@@ -15,19 +15,3 @@ for _ in range(int(input())):
             print('YES')
         else:
             print('NO')
-        
-# a = 'ga'
-# b = 'ga'
-# if a == b:
-#     print('yes')
-# else:
-#     print('no')
-# a = 'ro'
-# b = 'or'
-
-# print(sorted(a))
-# print(sorted(b))
-# if sorted(a) == sorted(b):
-#     print('yes')
-# else:
-#     print('No')
