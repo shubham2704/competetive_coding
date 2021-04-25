@@ -4,12 +4,8 @@ for _ in range(int(input())):
     res = ''
     for _ in range(n):
         m = input()
-        x1 = x-1
-        if m.count('F')>=x:
-            res += '1'
-        elif m.count('F') == x1 and m.count('p') >= y:
-            res += '1'
-        else:
-            res += '0'
+        if m.count('F')>=x: res += '1'
+        elif m.count('F') == x-1 and m.count('P') >= y: res += '1'
+        else: res += '0'
     print(res)
     res = ''
